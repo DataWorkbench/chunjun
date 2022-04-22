@@ -19,11 +19,13 @@ package com.dtstack.flinkx.client.util;
 
 import com.dtstack.flinkx.options.Options;
 
+import org.apache.flink.api.common.JobID;
 import org.apache.flink.client.deployment.ClusterSpecification;
 import org.apache.flink.client.program.PackagedProgram;
 import org.apache.flink.client.program.PackagedProgramUtils;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.runtime.jobgraph.JobGraph;
+import org.apache.flink.util.StringUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,12 +60,19 @@ public class JobGraphUtil {
                         .setConfiguration(launcherOptions.loadFlinkConfiguration())
                         .setArguments(programArgs)
                         .build();
+
         JobGraph jobGraph =
                 PackagedProgramUtils.createJobGraph(
                         program,
                         launcherOptions.loadFlinkConfiguration(),
                         flinkConf.getInteger(DEFAULT_PARALLELISM),
+                        new JobID(StringUtils.hexStringToByte(launcherOptions.getJobId())),
                         false);
+        /*PackagedProgramUtils.createJobGraph(
+        program,
+        launcherOptions.loadFlinkConfiguration(),
+        flinkConf.getInteger(DEFAULT_PARALLELISM),
+        false);*/
         List<URL> pluginClassPath =
                 jobGraph.getUserArtifacts().entrySet().stream()
                         .filter(tmp -> tmp.getKey().startsWith("class_path"))
