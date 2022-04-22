@@ -56,8 +56,7 @@ public class StandaloneClusterClientHelper implements ClusterClientHelper {
                     standaloneClusterDescriptor
                             .retrieve(StandaloneClusterId.getInstance())
                             .getClusterClient();
-            JobGraph jobGraph =
-                    JobGraphUtil.buildJobGraph(launcherOptions, programArgs.toArray(new String[0]));
+            JobGraph jobGraph = JobGraphUtil.buildJobGraph(launcherOptions, programArgs.toArray(new String[0]));
             JobID jobID = (JobID) clusterClient.submitJob(jobGraph).get();
             LOG.info("submit job successfully, jobID = {}", jobID);
             return clusterClient;
