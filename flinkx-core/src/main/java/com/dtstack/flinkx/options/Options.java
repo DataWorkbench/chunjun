@@ -39,6 +39,9 @@ public class Options {
     @OptionRequired(description = "Flink Job Id")
     private String jobId;
 
+    @OptionRequired(description = "Send Connector Jars to TM")
+    private String sendJars;
+
     @OptionRequired(description = "job type:sql or sync")
     private String jobType;
 
@@ -228,11 +231,22 @@ public class Options {
         this.jobType = jobType;
     }
 
+    public String getSendJars() {
+        return sendJars;
+    }
+
+    public void setSendJars(String sendJars) {
+        this.sendJars = sendJars;
+    }
+
     @Override
     public String toString() {
         return "Options{"
                 + "jobId='"
                 + jobId
+                + '\''
+                + "addJar='"
+                + addjar
                 + '\''
                 + "jobType='"
                 + jobType
