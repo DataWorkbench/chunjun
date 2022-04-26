@@ -87,7 +87,9 @@ public class JobGraphUtil {
                                     return null;
                                 })
                         .collect(Collectors.toList());
+
         jobGraph.setClasspaths(pluginClassPath);
+        jobGraph.addJars(pluginClassPath);
         return jobGraph;
     }
 
