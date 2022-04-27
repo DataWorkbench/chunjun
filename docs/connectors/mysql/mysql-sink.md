@@ -96,6 +96,8 @@ mysql5.x
   - 描述：控制写入数据到目标表采用 insert into 或者 replace into 或者 ON DUPLICATE KEY UPDATE 语句 
   - 必选：是
   - 所有选项：insert/replace/update
+    replace into :根据表里的主键或唯一索引,先删除原记录，再插入新记录
+    ON DUPLICATE KEY UPDATE :根据表里的主键或唯一索引,更新指定的字段
   - 参数类型：String
   - 默认值：insert
 <br />
