@@ -39,8 +39,8 @@ public class Options {
     @OptionRequired(description = "Flink Job Id")
     private String jobId;
 
-    @OptionRequired(description = "Send Connector Jars to TM")
-    private String sendJars;
+    @OptionRequired(description = "remote mode send jars to TM")
+    private String isRemote;
 
     @OptionRequired(description = "job type:sql or sync")
     private String jobType;
@@ -231,12 +231,12 @@ public class Options {
         this.jobType = jobType;
     }
 
-    public String getSendJars() {
-        return sendJars;
+    public String isRemote() {
+        return isRemote;
     }
 
-    public void setSendJars(String sendJars) {
-        this.sendJars = sendJars;
+    public void setIsRemote(String isRemote) {
+        this.isRemote = isRemote;
     }
 
     @Override
@@ -245,8 +245,8 @@ public class Options {
                 + "jobId='"
                 + jobId
                 + '\''
-                + "addJar='"
-                + addjar
+                + "isRemote='"
+                + isRemote
                 + '\''
                 + "jobType='"
                 + jobType
