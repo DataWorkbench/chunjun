@@ -90,7 +90,7 @@ public abstract class AbstractRowConverter<SourceT, LookupT, SinkT, T> implement
     protected IDeserializationConverter wrapIntoNullableInternalConverter(
             IDeserializationConverter IDeserializationConverter) {
         return val -> {
-            if (val == null) {
+            if (val == null || "".equals(val.toString().trim())) {
                 return null;
             } else {
                 try {

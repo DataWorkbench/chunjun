@@ -112,7 +112,7 @@ public class FtpColumnConverter extends AbstractRowConverter<RowData, RowData, S
             ISerializationConverter serializationConverter, FieldConf fieldConf) {
         return (rowData, index, list) -> {
             if (rowData == null || rowData.isNullAt(index)) {
-                list.set(index, null);
+                list.set(index, "");
             } else {
                 serializationConverter.serialize(rowData, index, list);
             }
