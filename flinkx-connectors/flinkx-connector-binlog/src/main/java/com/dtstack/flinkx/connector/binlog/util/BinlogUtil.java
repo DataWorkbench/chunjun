@@ -155,7 +155,7 @@ public class BinlogUtil {
     public static List<String> checkTablesPrivilege(
             Connection connection, String database, String filter, List<String> tables)
             throws SQLException {
-        if (CollectionUtils.isNotEmpty(tables)) {
+        if (CollectionUtils.isNotEmpty(tables) && !"*".equals(tables.get(0))) {
             HashMap<String, String> checkedTable = new HashMap<>(tables.size());
             // 按照.切割字符串需要转义
             String regexSchemaSplit = "\\" + ConstantValue.POINT_SYMBOL;
@@ -184,8 +184,8 @@ public class BinlogUtil {
             // Schema不为空且用户没有指定tables 就获取一张表判断权限
             if (StringUtils.isNotBlank(schema) && CollectionUtils.isEmpty(tables)) {
                 try (ResultSet resultSet =
-                        statement.executeQuery(
-                                String.format(QUERY_SCHEMA_TABLE_TEMPLATE, schema))) {
+                             statement.executeQuery(
+                                     String.format(QUERY_SCHEMA_TABLE_TEMPLATE, schema))) {
                     if (resultSet.next()) {
                         String tableName = resultSet.getString(1);
                         if (StringUtils.isNotBlank(tableName)) {

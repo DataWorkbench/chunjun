@@ -20,6 +20,7 @@ package com.dtstack.flinkx.connector.pgwal.converter;
 import com.dtstack.flinkx.connector.pgwal.util.ChangeLog;
 import com.dtstack.flinkx.connector.pgwal.util.ColumnInfo;
 import com.dtstack.flinkx.connector.pgwal.util.PgMessageTypeEnum;
+import com.dtstack.flinkx.constants.CDCConstantValue;
 import com.dtstack.flinkx.constants.ConstantValue;
 import com.dtstack.flinkx.converter.AbstractCDCRowConverter;
 import com.dtstack.flinkx.converter.IDeserializationConverter;
@@ -152,12 +153,16 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
         ColumnRowData columnRowData = new ColumnRowData(size);
         columnRowData.addField(new StringColumn(schema));
         columnRowData.addHeader(SCHEMA);
+        columnRowData.addExtHeader(CDCConstantValue.SCHEMA);
         columnRowData.addField(new StringColumn(table));
         columnRowData.addHeader(TABLE);
+        columnRowData.addExtHeader(CDCConstantValue.TABLE);
         columnRowData.addField(new BigDecimalColumn(super.idWorker.nextId()));
         columnRowData.addHeader(TS);
+        columnRowData.addExtHeader(TS);
         columnRowData.addField(new TimestampColumn(entity.getTs()));
         columnRowData.addHeader(OP_TIME);
+        columnRowData.addExtHeader(CDCConstantValue.OP_TIME);
 
         List<Object> beforeList = Stream.of(entity.getOldData()).collect(Collectors.toList());
         List<Object> afterList = Stream.of(entity.getNewData()).collect(Collectors.toList());
@@ -174,12 +179,22 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
                         : columnList.stream().map(ColumnInfo::getName).collect(Collectors.toList());
 
         if (pavingData) {
+            String prefix_before = BEFORE_;
+            String prefix_after = AFTER_;
+            if (split) {
+                prefix_before = "";
+                prefix_after = "";
+            }
             beforeHeaderList =
                     parseColumnList(
-                            converters, beforeList, beforeColumnList, beforeHeaderList, BEFORE_);
+                            converters,
+                            beforeList,
+                            beforeColumnList,
+                            beforeHeaderList,
+                            prefix_before);
             afterHeaderList =
                     parseColumnList(
-                            converters, afterList, afterColumnList, afterHeaderList, AFTER_);
+                            converters, afterList, afterColumnList, afterHeaderList, prefix_after);
         } else {
             beforeColumnList.add(
                     new MapColumn(processColumnList(entity.getColumnList(), entity.getOldData())));
@@ -195,6 +210,7 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
             copy.setRowKind(RowKind.UPDATE_BEFORE);
             copy.addField(new StringColumn(RowKind.UPDATE_BEFORE.name()));
             copy.addHeader(TYPE);
+            copy.addExtHeader(CDCConstantValue.TYPE);
             copy.addAllField(beforeColumnList);
             copy.addAllHeader(beforeHeaderList);
             result.add(copy);
@@ -202,10 +218,12 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
             columnRowData.setRowKind(RowKind.UPDATE_AFTER);
             columnRowData.addField(new StringColumn(RowKind.UPDATE_AFTER.name()));
             columnRowData.addHeader(TYPE);
+            columnRowData.addExtHeader(CDCConstantValue.TYPE);
         } else {
             columnRowData.setRowKind(getRowKindByType(eventType.name()));
             columnRowData.addField(new StringColumn(eventType.name()));
             columnRowData.addHeader(TYPE);
+            columnRowData.addExtHeader(CDCConstantValue.TYPE);
             columnRowData.addAllField(beforeColumnList);
             columnRowData.addAllHeader(beforeHeaderList);
         }

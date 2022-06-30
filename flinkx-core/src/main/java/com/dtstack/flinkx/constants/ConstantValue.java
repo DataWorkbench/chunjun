@@ -41,6 +41,7 @@ public class ConstantValue {
     public static final String RIGHT_PARENTHESIS_SYMBOL = ")";
 
     public static final String DATA_TYPE_UNSIGNED = "UNSIGNED";
+    public static final String DATA_TYPE_UNSIGNED_LOWER = "unsigned";
 
     public static final String KEY_HTTP = "http";
 
@@ -72,7 +73,11 @@ public class ConstantValue {
 
     public static final String CONNECTOR_DIR_NAME = "connector";
 
+    public static final String FORMAT_DIR_NAME = "formats";
+
     public static final String DIRTY_DATA_DIR_NAME = "dirty-data-collector";
 
     public static final String RESTORE_DIR_NAME = "restore-plugins";
+
+    public static final String DDL_DIR_NAME = "ddl";
 }

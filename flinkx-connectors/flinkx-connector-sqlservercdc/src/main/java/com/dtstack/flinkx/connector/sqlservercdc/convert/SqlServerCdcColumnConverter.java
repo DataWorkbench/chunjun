@@ -20,6 +20,7 @@ package com.dtstack.flinkx.connector.sqlservercdc.convert;
 import com.dtstack.flinkx.connector.sqlservercdc.entity.ChangeTable;
 import com.dtstack.flinkx.connector.sqlservercdc.entity.SqlServerCdcEnum;
 import com.dtstack.flinkx.connector.sqlservercdc.entity.SqlServerCdcEventRow;
+import com.dtstack.flinkx.constants.CDCConstantValue;
 import com.dtstack.flinkx.constants.ConstantValue;
 import com.dtstack.flinkx.converter.AbstractCDCRowConverter;
 import com.dtstack.flinkx.converter.IDeserializationConverter;
@@ -113,12 +114,16 @@ public class SqlServerCdcColumnConverter
         ColumnRowData columnRowData = new ColumnRowData(size);
         columnRowData.addField(new StringColumn(schema));
         columnRowData.addHeader(SCHEMA);
+        columnRowData.addExtHeader(CDCConstantValue.SCHEMA);
         columnRowData.addField(new StringColumn(table));
         columnRowData.addHeader(TABLE);
+        columnRowData.addExtHeader(CDCConstantValue.TABLE);
         columnRowData.addField(new BigDecimalColumn(super.idWorker.nextId()));
         columnRowData.addHeader(TS);
+        columnRowData.addExtHeader(TS);
         columnRowData.addField(new TimestampColumn(sqlServerCdcEventRow.getTs()));
         columnRowData.addHeader(OP_TIME);
+        columnRowData.addExtHeader(CDCConstantValue.OP_TIME);
 
         Object[] data = sqlServerCdcEventRow.getData();
         Object[] dataPrev = sqlServerCdcEventRow.getDataPrev();
@@ -130,6 +135,12 @@ public class SqlServerCdcColumnConverter
 
         // delete pass before value,insert pass after value,update pass both
         if (pavingData) {
+            String prefix_before = BEFORE_;
+            String prefix_after = AFTER_;
+            if (split) {
+                prefix_before = "";
+                prefix_after = "";
+            }
             switch (sqlServerCdcEventRow.getType().toUpperCase(Locale.ENGLISH)) {
                 case "DELETE":
                     parseColumnList(
@@ -138,7 +149,7 @@ public class SqlServerCdcColumnConverter
                             changeTable.getColumnList(),
                             beforeColumnList,
                             beforeHeaderList,
-                            BEFORE_);
+                            prefix_before);
                     break;
                 case "INSERT":
                     parseColumnList(
@@ -147,7 +158,7 @@ public class SqlServerCdcColumnConverter
                             changeTable.getColumnList(),
                             afterColumnList,
                             afterHeaderList,
-                            AFTER_);
+                            prefix_after);
                     break;
                 case "UPDATE":
                     parseColumnList(
@@ -156,14 +167,14 @@ public class SqlServerCdcColumnConverter
                             changeTable.getColumnList(),
                             beforeColumnList,
                             beforeHeaderList,
-                            BEFORE_);
+                            prefix_before);
                     parseColumnList(
                             converters,
                             data,
                             changeTable.getColumnList(),
                             afterColumnList,
                             afterHeaderList,
-                            AFTER_);
+                            prefix_after);
                     break;
             }
         } else {
@@ -208,6 +219,7 @@ public class SqlServerCdcColumnConverter
             copy.setRowKind(RowKind.UPDATE_BEFORE);
             copy.addField(new StringColumn(RowKind.UPDATE_BEFORE.name()));
             copy.addHeader(TYPE);
+            copy.addExtHeader(CDCConstantValue.TYPE);
             copy.addAllField(beforeColumnList);
             copy.addAllHeader(beforeHeaderList);
             result.add(copy);
@@ -219,6 +231,7 @@ public class SqlServerCdcColumnConverter
             columnRowData.setRowKind(getRowKindByType(eventType));
             columnRowData.addField(new StringColumn(eventType));
             columnRowData.addHeader(TYPE);
+            columnRowData.addExtHeader(CDCConstantValue.TYPE);
             columnRowData.addAllField(beforeColumnList);
             columnRowData.addAllHeader(beforeHeaderList);
         }
@@ -271,7 +284,6 @@ public class SqlServerCdcColumnConverter
                 return (IDeserializationConverter<Short, AbstractBaseColumn>) BigDecimalColumn::new;
             case "INT":
             case "INTEGER":
-            case "SMALLINT":
                 return (IDeserializationConverter<Integer, AbstractBaseColumn>)
                         BigDecimalColumn::new;
             case "FLOAT":
@@ -315,12 +327,12 @@ public class SqlServerCdcColumnConverter
                             long longValue = new BigInteger(hexString, 16).longValue();
                             return new BigDecimalColumn(longValue);
                         };
-                //            case "ROWVERSION":
-                //            case "UNIQUEIDENTIFIER":
-                //            case "CURSOR":
-                //            case "TABLE":
-                //            case "SQL_VARIANT":
-                //            case "XML":
+            //            case "ROWVERSION":
+            //            case "UNIQUEIDENTIFIER":
+            //            case "CURSOR":
+            //            case "TABLE":
+            //            case "SQL_VARIANT":
+            //            case "XML":
             default:
                 throw new UnsupportedOperationException("Unsupported type:" + type);
         }
