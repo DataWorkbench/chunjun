@@ -11,7 +11,6 @@ gbase：[下载](gbase-8.3.81.53.jar)
 达梦：[下载](Dm7JdbcDriver18.jar)
 
 然后上传到本地仓库：
-
 ```
 mvn install:install-file -DgroupId=com.ibm.db2 -DartifactId=db2jcc -Dversion=3.72.44 -Dpackaging=jar -Dfile=db2jcc-3.72.44.jar
 
