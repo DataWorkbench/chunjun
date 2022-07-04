@@ -47,16 +47,16 @@
 		<!--File-->
         <module>chunjun-connector-file</module>
 		<module>chunjun-connector-filesystem</module>
-<!--        <module>chunjun-connector-ftp</module>-->
-<!--        <module>chunjun-connector-hdfs</module>-->
-<!--        <module>chunjun-connector-hive</module>-->
+        <module>chunjun-connector-ftp</module>
+        <module>chunjun-connector-hdfs</module>
+        <module>chunjun-connector-hive</module>
 <!--        <module>chunjun-connector-inceptor</module>-->
 
 		<!--NoSql-->
 		<module>chunjun-connector-hbase-base</module>
 		<module>chunjun-connector-hbase-1.4</module>
 <!--		<module>chunjun-connector-elasticsearch5</module>-->
-<!--		<module>chunjun-connector-elasticsearch6</module>-->
+		<module>chunjun-connector-elasticsearch6</module>
 		<module>chunjun-connector-elasticsearch7</module>
 		<module>chunjun-connector-elasticsearch-base</module>
 		<module>chunjun-connector-redis</module>
