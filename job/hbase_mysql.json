@@ -1,0 +1,65 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "hbasereader",
+          "parameter": {
+            "hbaseConfig": {
+              "hbase.zookeeper.property.clientPort": "2181",
+              "hbase.rootdir": "hdfs://hadoop1:9000/hbase",
+              "hbase.cluster.distributed": "true",
+              "hbase.zookeeper.quorum": "hadoop1",
+              "zookeeper.znode.parent": "/hbase"
+            },
+            "table" : "emp3",
+            "encoding": "utf-8",
+            "column": [
+              {
+                "name": "rowkey",
+                "type": "string"
+              },
+              {
+                "name": "info:ENAME",
+                "type": "STRING"
+              },
+              {
+                "name": "info:JOB",
+                "type": "STRING"
+              }
+            ]
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "empno",
+                "type": "INT"
+              },
+              {
+                "name": "ename",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "job",
+                "type": "VARCHAR"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://hadoop1:3306/test?useSSL=false",
+                "table": [
+                  "emp"
+                ]
+              }
+            ],
+            "password": "000000",
+            "username": "root"
+          }
+        }
+      }
+    ]
+  }
+}

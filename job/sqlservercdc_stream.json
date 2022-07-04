@@ -1,0 +1,32 @@
+{
+  "job" : {
+    "content" : [ {
+      "reader" : {
+        "parameter" : {
+          "databaseName":"dataomnis",
+          "tableList": ["dbo.stu"],
+          "username" : "SA",
+          "password" : "c3Fsc2VydmVy",
+          "cat" : "insert,delete,update",
+          "url" : "jdbc:sqlserver://139.198.36.32:11115;databaseName=dataomnis",
+          "splitUpdate" : true,
+          "pavingData" : true,
+          "pollInterval" : 1000
+        },
+        "name" : "sqlservercdcreader"
+      },
+      "writer" : {
+        "parameter" : {
+          "print" : true
+        },
+        "name" : "streamwriter"
+      }
+    } ],
+    "setting" : {
+      "speed" : {
+        "bytes" : 0,
+        "channel" : 1
+      }
+    }
+  }
+}

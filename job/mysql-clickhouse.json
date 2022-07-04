@@ -1,0 +1,118 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "column": [
+              {
+                "name": "comm",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "deptno",
+                "type": "INT"
+              },
+              {
+                "name": "empno",
+                "type": "INT"
+              },
+              {
+                "name": "ename",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "hiredate",
+                "type": "DATE"
+              },
+              {
+                "name": "job",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "mgr",
+                "type": "INT"
+              },
+              {
+                "name": "sal",
+                "type": "DOUBLE"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:mysql://hadoop5:3306/dataomnis?useSSL=false"
+                ],
+                "table": [
+                  "emp"
+                ]
+              }
+            ],
+            "password": "pa88w0rd",
+            "username": "root"
+          }
+        },
+        "writer": {
+          "name": "clickhousewriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "COMM",
+                "type": "FLOAT64"
+              },
+              {
+                "name": "DEPTNO",
+                "type": "Int32"
+              },
+              {
+                "name": "EMPNO",
+                "type": "Int32"
+              },
+              {
+                "name": "ENAME",
+                "type": "String"
+              },
+              {
+                "name": "HIREDATE",
+                "type": "date"
+              },
+              {
+                "name": "JOB",
+                "type": "String"
+              },
+              {
+                "name": "MGR",
+                "type": "Int32"
+              },
+              {
+                "name": "SAL",
+                "type": "FLOAT64"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:clickhouse://139.198.4.170:8123/dataomnis",
+                "table": [
+                  "emp"
+                ]
+              }
+            ],
+            "mode": "insert",
+            "password": "clickhouse",
+            "username": "default"
+          }
+        },
+        "transformer": {
+          "transformSql": ""
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "bytes": 0,
+        "channel": 1
+      }
+    }
+  }
+}

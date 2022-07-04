@@ -1,0 +1,50 @@
+{
+  "job" : {
+    "content" : [ {
+      "reader" : {
+        "parameter" : {
+          "temporary" : false,
+          "password" : "000000",
+          "databaseName" : "postgres",
+          "cat" : "insert,update,delete",
+          "tableList" : [ "public.stu" ],
+          "allowCreateSlot" : true,
+          "pavingData" : true,
+          "splitUpdate" : true,
+          "url" : "jdbc:postgresql://139.198.36.32:11114/postgres?useUnicode=true&characterEncoding=utf8",
+          "username" : "postgres"
+        },
+        "name" : "pgwalreader"
+      },
+      "writer": {
+        "name": "mysqlwriter",
+        "parameter": {
+          "connection": [
+            {
+              "jdbcUrl": "jdbc:mysql://139.198.36.32:11112/postgres?useSSL=false&allowPublicKeyRetrieval=true",
+              "table": [
+                "stu"
+              ]
+            }
+          ],
+          "password": "000000",
+          "username": "root"
+        }
+      }
+    } ],
+    "setting" : {
+      "restore" : {
+        "isRestore" : true,
+        "isStream" : true
+      },
+      "errorLimit" : {
+      },
+      "speed" : {
+        "readerChannel" : 1,
+        "writerChannel" : 1,
+        "bytes" : -1048576,
+        "channel" : 1
+      }
+    }
+  }
+}

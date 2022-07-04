@@ -1,0 +1,63 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "parameter": {
+            "databaseName": "dataomnis",
+            "tableList": [
+              "dbo.stu"
+            ],
+            "username": "SA",
+            "password": "c3Fsc2VydmVy",
+            "cat": "insert,delete,update",
+            "url": "jdbc:sqlserver://139.198.36.32:11115;databaseName=dataomnis",
+            "splitUpdate": true,
+            "pavingData": true,
+            "pollInterval": 1000
+          },
+          "name": "sqlservercdcreader"
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://139.198.36.32:11112/test?useSSL=false&allowPublicKeyRetrieval=true",
+                "table": [
+                  "stu2"
+                ]
+              }
+            ],
+            "password": "000000",
+            "username": "root"
+          }
+        },
+        "nameMapping": {
+          "schemaMappings":{
+            "dbo":"test"
+          },
+          "tableMappings": {
+            "dbo":{
+              "stu": "stu2"
+            }
+          },
+          "fieldMappings":{
+            "dbo":{
+              "stu":{
+                "id":"id2",
+                "name":"name2"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "bytes": 0,
+        "channel": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "column": [
+              {
+                "name": "comm",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "deptno",
+                "type": "INT"
+              },
+              {
+                "name": "empno",
+                "type": "INT"
+              },
+              {
+                "name": "ename",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "hiredate",
+                "type": "DATE"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false"
+                ],
+                "table": [
+                  "emp"
+                ]
+              }
+            ],
+            "password": "pa88w0rd",
+            "username": "root"
+          }
+        },
+        "writer": {
+          "name": "postgresqlwriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "comm",
+                "type": "REAL"
+              },
+              {
+                "name": "deptno",
+                "type": "INTEGER"
+              },
+              {
+                "name": "empno",
+                "type": "INTEGER"
+              },
+              {
+                "name": "ename",
+                "type": "CHARACTER"
+              },
+              {
+                "name": "hiredate",
+                "type": "DATE"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:postgresql://139.198.4.170:5432/dataomnis?useSSL=false",
+                "table": [
+                  "public.emp"
+                ]
+              }
+            ],
+            "mode": "replace",
+            "password": "postgres",
+            "semantic": "exactly-once",
+            "username": "postgres"
+          }
+        },
+        "transformer": {
+          "transformSql": ""
+        }
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
