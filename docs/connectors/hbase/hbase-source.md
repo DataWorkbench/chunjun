@@ -71,7 +71,7 @@ Kerberos；<br />hbase.security.authentication；<br />hbase.security.authorizat
 
 <br />
 
-- **column**
+- **x**
     - 描述：要读取的hbase字段，normal 模式与multiVersionFixedColumn 模式下必填项。
         - name：指定读取的hbase列，除了rowkey外，必须为 列族:列名 的格式；
         - type：指定源数据的类型，format指定日期类型的格式，value指定当前类型为常量，不从hbase读取数据，而是根据value值自动生成对应的列。
@@ -158,4 +158,4 @@ Kerberos；<br />hbase.security.authentication；<br />hbase.security.authorizat
 
 
 ## 六、脚本示例
-见项目内`flinkx-examples`文件夹。
+见项目内`chunjun-examples`文件夹。
