@@ -1,0 +1,114 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "column": [
+              {
+                "name": "EMPNO",
+                "type": "INT"
+              },
+              {
+                "name": "ENAME",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "JOB",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "MGR",
+                "type": "INT"
+              },
+              {
+                "name": "HIREDATE",
+                "type": "DATE"
+              },
+              {
+                "name": "SAL",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "COMM",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "DEPTNO",
+                "type": "INT"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true"
+                ],
+                "table": [
+                  "emp"
+                ]
+              }
+            ],
+            "password": "pa88w0rd",
+            "username": "root",
+            "where": " 1=1 "
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "EMPNO",
+                "type": "INT"
+              },
+              {
+                "name": "ENAME",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "JOB",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "MGR",
+                "type": "INT"
+              },
+              {
+                "name": "HIREDATE",
+                "type": "DATE"
+              },
+              {
+                "name": "SAL",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "COMM",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "DEPTNO",
+                "type": "INT"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
+                "table": [
+                  "emp2"
+                ]
+              }
+            ],
+            "mode": "insert",
+            "password": "pa88w0rd",
+            "semantic": "exactly-once",
+            "username": "root"
+          }
+        }
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
