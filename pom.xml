@@ -329,6 +329,12 @@
 							</goals>
 							<configuration>
 								<createDependencyReducedPom>false</createDependencyReducedPom>
+								<relocations>
+									<relocation>
+										<pattern>com.google.common</pattern>
+										<shadedPattern>shade.core.com.google.common</shadedPattern>
+									</relocation>
+								</relocations>
 							</configuration>
 						</execution>
 					</executions>
