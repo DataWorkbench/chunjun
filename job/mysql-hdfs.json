@@ -42,22 +42,22 @@
             "connection": [
               {
                 "jdbcUrl": [
-                  "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false"
+                  "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false"
                 ],
                 "table": [
                   "emp"
                 ]
               }
             ],
-            "password": "pa88w0rd",
+            "password": "root",
             "username": "root"
           }
         },
         "writer": {
           "name": "hdfswriter",
           "parameter": {
-            "path": "hdfs:///user/hive/warehouse/emp",
-            "defaultFS": "hdfs://139.198.28.41:9000",
+            "path": "hdfs:///user/hive/warehouse/emp/",
+            "defaultFS": "hdfs://139.198.123.26:29000",
             "column": [
               {
                 "name": "comm",
@@ -97,7 +97,7 @@
             "nextCheckRows": 20000,
             "fieldDelimiter": ",",
             "encoding": "utf-8",
-            "fileName": "pt=1",
+            "fileName": "emp",
             "writeMode": "overwrite"
           }
         }
