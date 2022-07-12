@@ -42,7 +42,7 @@
             "connection": [
               {
                 "jdbcUrl": [
-                  "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false"
+                  "jdbc:mysql://192.168.100.5:3306/dataomnis?useSSL=false"
                 ],
                 "table": [
                   "emp"
@@ -57,7 +57,7 @@
           "name": "hdfswriter",
           "parameter": {
             "path": "hdfs:///user/hive/warehouse/emp/",
-            "defaultFS": "hdfs://139.198.123.26:29000",
+            "defaultFS": "hdfs://192.168.100.2:9000",
             "column": [
               {
                 "name": "comm",
