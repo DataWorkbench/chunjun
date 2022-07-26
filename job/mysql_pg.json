@@ -30,14 +30,14 @@
             "connection": [
               {
                 "jdbcUrl": [
-                  "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false"
+                  "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false"
                 ],
                 "table": [
                   "emp"
                 ]
               }
             ],
-            "password": "pa88w0rd",
+            "password": "root",
             "username": "root"
           }
         },

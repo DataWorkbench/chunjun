@@ -24,7 +24,7 @@
               },
               {
                 "name": "hiredate",
-                "type": "DATE"
+                "type": "VARCHAR"
               },
               {
                 "name": "job",
@@ -42,14 +42,14 @@
             "connection": [
               {
                 "jdbcUrl": [
-                  "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false"
+                  "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false"
                 ],
                 "table": [
                   "emp"
                 ]
               }
             ],
-            "password": "pa88w0rd",
+            "password": "root",
             "username": "root"
           }
         },
@@ -92,14 +92,13 @@
             ],
             "connection": [
               {
-                "jdbcUrl": "jdbc:mysql://139.198.32.39:3306/dataomnis?useSSL=false",
+                "jdbcUrl": "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false",
                 "table": [
                   "emp2"
                 ]
               }
             ],
-            "mode": "replace",
-            "password": "pa88w0rd",
+            "password": "root",
             "username": "root"
           }
         },
