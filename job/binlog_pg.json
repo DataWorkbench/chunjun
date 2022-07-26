@@ -1,0 +1,116 @@
+{
+    "job": {
+        "content": [
+            {
+                "reader": {
+                    "name": "binlogreader",
+                    "parameter": {
+                        "cat": "insert,update,delete",
+                        "connectionCharset": "UTF8",
+                        "host": "139.198.36.32",
+                        "isGTIDMode": false,
+                        "jdbcUrl": "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
+                        "parallel": true,
+                        "parallelThreadSize": 2,
+                        "password": "root",
+                        "pavingData": true,
+                        "port": 3306,
+                        "split": true,
+                        "table": [
+                            "emp"
+                        ],
+                        "username": "root"
+                    }
+                },
+                "writer": {
+                    "name": "postgresqlwriter",
+                    "parameter": {
+                        "batchSize": 100,
+                        "column": [
+                            {
+                              "name": "empno",
+                              "type": "INTEGER"
+                            },
+                            {
+                              "name": "ename",
+                              "type": "CHARACTER"
+                            },
+                            {
+                              "name": "job",
+                              "type": "CHARACTER"
+                            },
+                            {
+                              "name": "mgr",
+                              "type": "INTEGER"
+                            },
+                            {
+                              "name": "hiredate",
+                              "type": "CHARACTER"
+                            },
+                            {
+                              "name": "sal",
+                              "type": "REAL"
+                            },
+                            {
+                                "name": "comm",
+                                "type": "REAL"
+                            },
+                            {
+                                "name": "deptno",
+                                "type": "INTEGER"
+                            }
+
+                        ],
+                        "connection": [
+                            {
+                                "jdbcUrl": "jdbc:postgresql://139.198.123.26:5432/dataomnis?useSSL=false",
+                                "table": [
+                                    "emp"
+                                ],
+                                "schema": "public"
+                            }
+                        ],
+                        "mode": "insert",
+                        "password": "postgres",
+                        "postSql": [
+                            ""
+                        ],
+                        "preSql": [
+                            ""
+                        ],
+                        "semantic": "at-least-once",
+                        "username": "postgres"
+                    }
+                },
+                "transformer": null,
+                "nameMapping": {
+                    "schemaMappings": {
+                        "dataomnis": "public"
+                    },
+                    "tableMappings": {
+                        "dataomnis": {
+                            "emp": "emp"
+                        }
+                    },
+                    "fieldMappings": {
+                        "dataomnis": {
+                            "emp": {
+                                "COMM": "comm",
+                                "DEPTNO": "deptno",
+                                "EMPNO": "empno",
+                                "ENAME": "ename",
+                                "HIREDATE": "hiredate",
+                                "JOB": "job",
+                                "MGR": "mgr",
+                                "SAL": "sal"
+                            }
+                        }
+                    }
+                }
+            }
+        ],
+        "setting": {
+            "record": "0"
+        }
+    }
+}
