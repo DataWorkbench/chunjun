@@ -12,27 +12,27 @@
               },
               {
                 "name": "deptno",
-                "type": "int"
+                "type": "INT"
               },
               {
                 "name": "empno",
-                "type": "int"
+                "type": "INT"
               },
               {
                 "name": "ename",
-                "type": "varchar"
+                "type": "string"
               },
               {
                 "name": "hiredate",
-                "type": "varchar"
+                "type": "date"
               },
               {
                 "name": "job",
-                "type": "varchar"
+                "type": "string"
               },
               {
                 "name": "mgr",
-                "type": "int"
+                "type": "double"
               },
               {
                 "name": "sal",
@@ -42,7 +42,7 @@
             "connection": [
               {
                 "jdbcUrl": [
-                  "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false"
+                  "jdbc:mysql://139.198.123.26:13306/dataomnis?useSSL=false"
                 ],
                 "table": [
                   "emp"
@@ -54,12 +54,11 @@
           }
         },
         "writer": {
-          "name": "postgresqlwriter",
           "parameter": {
             "column": [
               {
                 "name": "comm",
-                "type": "REAL"
+                "type": "double"
               },
               {
                 "name": "deptno",
@@ -71,48 +70,37 @@
               },
               {
                 "name": "ename",
-                "type": "CHARACTER"
+                "type": "TEXT"
               },
               {
                 "name": "hiredate",
-                "type": "CHARACTER"
+                "type": "TEXT"
               },
               {
                 "name": "job",
-                "type": "CHARACTER"
+                "type": "TEXT"
               },
               {
                 "name": "mgr",
-                "type": "INTEGER"
+                "type": "double"
               },
               {
                 "name": "sal",
-                "type": "REAL"
+                "type": "double"
               }
             ],
-            "connection": [
-              {
-                "jdbcUrl": "jdbc:postgresql://139.198.123.26:5432/dataomnis?useSSL=false",
-                "table": [
-                  "public.emp"
-                ]
-              }
-            ],
-            "mode": "insert",
-            "password": "postgres",
-            "semantic": "exactly-once",
-            "username": "postgres"
-          }
-        },
-        "transformer": {
-          "transformSql": ""
+            "hosts": ["139.198.123.26:9200"],
+            "index": "emp",
+            "keyDelimiter":"${empno}_${ename}"
+          },
+          "name": "elasticsearch7writer"
         }
       }
     ],
     "setting": {
       "speed": {
-        "bytes": 0,
-        "channel": 1
+        "channel": 1,
+        "bytes": 0
       }
     }
   }
