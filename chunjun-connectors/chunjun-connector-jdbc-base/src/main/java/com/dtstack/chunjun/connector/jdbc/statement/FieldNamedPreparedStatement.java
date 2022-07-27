@@ -129,7 +129,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setNull(int, int)
      */
-    void setNull(int fieldIndex, int sqlType) throws SQLException;
+    void setNull(int fieldIndex, Integer sqlType) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>boolean</code> value. The driver
@@ -138,7 +138,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setBoolean(int, boolean)
      */
-    void setBoolean(int fieldIndex, boolean x) throws SQLException;
+    void setBoolean(int fieldIndex, Boolean x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>byte</code> value. The driver converts
@@ -146,7 +146,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setByte(int, byte)
      */
-    void setByte(int fieldIndex, byte x) throws SQLException;
+    void setByte(int fieldIndex, Byte x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>short</code> value. The driver converts
@@ -154,7 +154,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setShort(int, short)
      */
-    void setShort(int fieldIndex, short x) throws SQLException;
+    void setShort(int fieldIndex, Short x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>int</code> value. The driver converts
@@ -162,7 +162,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setInt(int, int)
      */
-    void setInt(int fieldIndex, int x) throws SQLException;
+    void setInt(int fieldIndex, Integer x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>long</code> value. The driver converts
@@ -170,7 +170,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setLong(int, long)
      */
-    void setLong(int fieldIndex, long x) throws SQLException;
+    void setLong(int fieldIndex, Long x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>float</code> value. The driver converts
@@ -178,7 +178,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setFloat(int, float)
      */
-    void setFloat(int fieldIndex, float x) throws SQLException;
+    void setFloat(int fieldIndex, Float x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given Java <code>double</code> value. The driver
@@ -186,7 +186,7 @@ public interface FieldNamedPreparedStatement extends AutoCloseable {
      *
      * @see PreparedStatement#setDouble(int, double)
      */
-    void setDouble(int fieldIndex, double x) throws SQLException;
+    void setDouble(int fieldIndex, Double x) throws SQLException;
 
     /**
      * Sets the designated parameter to the given <code>java.math.BigDecimal</code> value. The

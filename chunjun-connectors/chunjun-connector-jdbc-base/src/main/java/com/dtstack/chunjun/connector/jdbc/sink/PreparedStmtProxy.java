@@ -271,42 +271,42 @@ public class PreparedStmtProxy implements FieldNamedPreparedStatement {
     }
 
     @Override
-    public void setNull(int fieldIndex, int sqlType) throws SQLException {
+    public void setNull(int fieldIndex, Integer sqlType) throws SQLException {
         currentFieldNamedPstmt.setNull(fieldIndex, sqlType);
     }
 
     @Override
-    public void setBoolean(int fieldIndex, boolean x) throws SQLException {
+    public void setBoolean(int fieldIndex, Boolean x) throws SQLException {
         currentFieldNamedPstmt.setBoolean(fieldIndex, x);
     }
 
     @Override
-    public void setByte(int fieldIndex, byte x) throws SQLException {
+    public void setByte(int fieldIndex, Byte x) throws SQLException {
         currentFieldNamedPstmt.setByte(fieldIndex, x);
     }
 
     @Override
-    public void setShort(int fieldIndex, short x) throws SQLException {
+    public void setShort(int fieldIndex, Short x) throws SQLException {
         currentFieldNamedPstmt.setShort(fieldIndex, x);
     }
 
     @Override
-    public void setInt(int fieldIndex, int x) throws SQLException {
+    public void setInt(int fieldIndex, Integer x) throws SQLException {
         currentFieldNamedPstmt.setInt(fieldIndex, x);
     }
 
     @Override
-    public void setLong(int fieldIndex, long x) throws SQLException {
+    public void setLong(int fieldIndex, Long x) throws SQLException {
         currentFieldNamedPstmt.setLong(fieldIndex, x);
     }
 
     @Override
-    public void setFloat(int fieldIndex, float x) throws SQLException {
+    public void setFloat(int fieldIndex, Float x) throws SQLException {
         currentFieldNamedPstmt.setFloat(fieldIndex, x);
     }
 
     @Override
-    public void setDouble(int fieldIndex, double x) throws SQLException {
+    public void setDouble(int fieldIndex, Double x) throws SQLException {
         currentFieldNamedPstmt.setDouble(fieldIndex, x);
     }
 

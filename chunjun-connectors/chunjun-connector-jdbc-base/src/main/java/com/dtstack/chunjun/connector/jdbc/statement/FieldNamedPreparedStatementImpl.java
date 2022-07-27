@@ -139,65 +139,97 @@ public class FieldNamedPreparedStatementImpl implements FieldNamedPreparedStatem
     }
 
     @Override
-    public void setNull(int fieldIndex, int sqlType) throws SQLException {
+    public void setNull(int fieldIndex, Integer sqlType) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
             statement.setNull(index, sqlType);
         }
     }
 
     @Override
-    public void setBoolean(int fieldIndex, boolean x) throws SQLException {
+    public void setBoolean(int fieldIndex, Boolean x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setBoolean(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setBoolean(index, x);
+            }
         }
     }
 
     @Override
-    public void setByte(int fieldIndex, byte x) throws SQLException {
+    public void setByte(int fieldIndex, Byte x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setByte(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setByte(index, x);
+            }
         }
     }
 
     @Override
-    public void setShort(int fieldIndex, short x) throws SQLException {
+    public void setShort(int fieldIndex, Short x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setShort(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setShort(index, x);
+            }
         }
     }
 
     @Override
-    public void setInt(int fieldIndex, int x) throws SQLException {
+    public void setInt(int fieldIndex, Integer x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setInt(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setInt(index, x);
+            }
         }
     }
 
     @Override
-    public void setLong(int fieldIndex, long x) throws SQLException {
+    public void setLong(int fieldIndex, Long x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setLong(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setLong(index, x);
+            }
         }
     }
 
     @Override
-    public void setFloat(int fieldIndex, float x) throws SQLException {
+    public void setFloat(int fieldIndex, Float x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setFloat(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setFloat(index, x);
+            }
         }
     }
 
     @Override
-    public void setDouble(int fieldIndex, double x) throws SQLException {
+    public void setDouble(int fieldIndex, Double x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setDouble(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setDouble(index, x);
+            }
         }
     }
 
     @Override
     public void setBigDecimal(int fieldIndex, BigDecimal x) throws SQLException {
         for (int index : indexMapping[fieldIndex]) {
-            statement.setBigDecimal(index, x);
+            if (x == null) {
+                statement.setObject(index, null);
+            } else {
+                statement.setBigDecimal(index, x);
+            }
         }
     }
 
