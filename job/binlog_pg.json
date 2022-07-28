@@ -12,7 +12,7 @@
                         "jdbcUrl": "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
                         "parallel": true,
                         "parallelThreadSize": 2,
-                        "password": "root",
+                        "password": "bXlzcWw=",
                         "pavingData": true,
                         "port": 3306,
                         "split": true,
