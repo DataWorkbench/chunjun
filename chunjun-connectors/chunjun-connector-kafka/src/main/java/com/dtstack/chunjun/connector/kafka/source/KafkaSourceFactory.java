@@ -34,10 +34,10 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.data.RowData;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -74,7 +74,7 @@ public class KafkaSourceFactory extends SourceFactory {
                 createKafkaDeserializationSchema(kafkaConf.getDeserialization());
         KafkaConsumerWrapper consumer =
                 new KafkaConsumerWrapper(
-                        Lists.newArrayList(kafkaConf.getTopic()), deserializationSchema, props);
+                        Arrays.asList(kafkaConf.getTopic()), deserializationSchema, props);
         switch (kafkaConf.getMode()) {
             case EARLIEST:
                 consumer.setStartFromEarliest();

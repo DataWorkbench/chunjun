@@ -3,23 +3,59 @@
     "content": [
       {
         "reader": {
-          "name": "binlogreader",
+          "name": "kafkasource",
           "parameter": {
-            "cat": "insert,update,delete",
-            "connectionCharset": "UTF8",
-            "host": "139.198.36.32",
-            "isGTIDMode": false,
-            "jdbcUrl": "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
-            "parallel": true,
-            "parallelThreadSize": 2,
-            "password": "bXlzcWw=",
-            "pavingData": true,
-            "port": 3306,
-            "split": true,
-            "table": [
-              "emp"
+            "codec": "text",
+            "column": [
+              {
+                "isPart": false,
+                "name": "EMPNO",
+                "type": "INT4"
+              },
+              {
+                "isPart": false,
+                "name": "ENAME",
+                "type": "TEXT"
+              },
+              {
+                "isPart": false,
+                "name": "JOB",
+                "type": "TEXT"
+              },
+              {
+                "isPart": false,
+                "name": "MGR",
+                "type": "INT4"
+              },
+              {
+                "isPart": false,
+                "name": "HIREDATE",
+                "type": "TEXT"
+              },
+              {
+                "isPart": false,
+                "name": "SAL",
+                "type": "FLOAT8"
+              },
+              {
+                "isPart": false,
+                "name": "COMM",
+                "type": "FLOAT8"
+              },
+              {
+                "isPart": false,
+                "name": "DEPTNO",
+                "type": "INT4"
+              }
             ],
-            "username": "root"
+            "consumerSettings": {
+              "auto.commit.enable": "false",
+              "bootstrap.servers": "139.198.28.41:9092"
+            },
+            "encoding": "UTF8",
+            "groupId": "default",
+            "mode": "earliest-offset",
+            "topic": "emp"
           }
         },
         "writer": {
@@ -65,7 +101,7 @@
                 "jdbcUrl": "jdbc:mysql://139.198.123.26:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
                 "schema": "dataomnis",
                 "table": [
-                  "emp"
+                  "emp3"
                 ]
               }
             ],
@@ -82,30 +118,7 @@
           }
         },
         "transformer": null,
-        "nameMapping": {
-          "schemaMappings": {
-            "dataomnis": "dataomnis"
-          },
-          "tableMappings": {
-            "dataomnis": {
-              "emp": "emp"
-            }
-          },
-          "fieldMappings": {
-            "dataomnis": {
-              "emp": {
-                "COMM": "COMM",
-                "DEPTNO": "DEPTNO",
-                "EMPNO": "EMPNO",
-                "ENAME": "ENAME",
-                "HIREDATE": "HIREDATE",
-                "JOB": "JOB",
-                "MGR": "MGR",
-                "SAL": "SAL"
-              }
-            }
-          }
-        }
+        "nameMapping": null
       }
     ],
     "setting": {
