@@ -56,45 +56,11 @@
         "writer": {
           "name": "kafkasink",
           "parameter": {
-            "column": [
-              {
-                "isPart": false,
-                "name": "comm",
-                "type": "DOUBLE"
-              },
-              {
-                "name": "deptno",
-                "type": "INT"
-              },
-              {
-                "name": "empno",
-                "type": "INT"
-              },
-              {
-                "name": "ename",
-                "type": "STRING"
-              },
-              {
-                "name": "hiredate",
-                "type": "DATE"
-              },
-              {
-                "name": "job",
-                "type": "STRING"
-              },
-              {
-                "name": "mgr",
-                "type": "INT"
-              },
-              {
-                "name": "sal",
-                "type": "DOUBLE"
-              }
-            ],
+            "tableFields": ["comm","deptno","empno","ename","hiredate","job","mgr","sal"],
             "producerSettings": {
-              "bootstrap.servers": "139.198.28.41:9092"
+              "bootstrap.servers": "192.168.0.46:9092,192.168.0.3:9092,192.168.0.4:9092"
             },
-            "topic": "emp"
+            "topic": "emp-json"
           }
         },
         "transformer": {

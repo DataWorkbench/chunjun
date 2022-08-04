@@ -146,7 +146,9 @@ public class KafkaColumnConverter extends AbstractRowConverter<String, Object, b
             for (int i = 0; i < arity; i++) {
                 Object object = row.getField(i);
                 Object value;
-                if (object instanceof TimestampColumn) {
+                if (object == null) {
+                    value = "";
+                } else if (object instanceof TimestampColumn) {
                     value = ((TimestampColumn) object).asTimestampStr();
                 } else {
                     value = org.apache.flink.util.StringUtils.arrayAwareToString(row.getField(i));

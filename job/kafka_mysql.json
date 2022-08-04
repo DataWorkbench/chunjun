@@ -5,63 +5,50 @@
         "reader": {
           "name": "kafkasource",
           "parameter": {
-            "codec": "text",
+            "codec": "json",
             "column": [
               {
-                "isPart": false,
-                "name": "EMPNO",
-                "type": "INT4"
+                "name": "empno",
+                "type": "INT"
               },
               {
-                "isPart": false,
-                "name": "ENAME",
-                "type": "TEXT"
+                "name": "ename",
+                "type": "STRING"
               },
               {
-                "isPart": false,
-                "name": "JOB",
-                "type": "TEXT"
+                "name": "job",
+                "type": "STRING"
               },
               {
-                "isPart": false,
-                "name": "MGR",
-                "type": "INT4"
+                "name": "mgr",
+                "type": "INT"
               },
               {
-                "isPart": false,
-                "name": "HIREDATE",
-                "type": "TEXT"
+                "name": "hiredate",
+                "type": "STRING"
               },
               {
-                "isPart": false,
-                "name": "SAL",
-                "type": "FLOAT8"
+                "name": "sal",
+                "type": "DOUBLE"
               },
               {
-                "isPart": false,
-                "name": "COMM",
-                "type": "FLOAT8"
-              },
-              {
-                "isPart": false,
-                "name": "DEPTNO",
-                "type": "INT4"
+                "name": "comm",
+                "type": "DOUBLE"
               }
             ],
             "consumerSettings": {
               "auto.commit.enable": "false",
-              "bootstrap.servers": "139.198.28.41:9092"
+              "bootstrap.servers": "192.168.0.46:9092,192.168.0.3:9092,192.168.0.4:9092"
             },
             "encoding": "UTF8",
             "groupId": "default",
             "mode": "earliest-offset",
-            "topic": "emp"
+            "topic": "emp-json"
           }
         },
         "writer": {
           "name": "mysqlwriter",
           "parameter": {
-            "batchSize": 100,
             "column": [
               {
                 "name": "EMPNO",
@@ -90,10 +77,6 @@
               {
                 "name": "COMM",
                 "type": "DOUBLE"
-              },
-              {
-                "name": "DEPTNO",
-                "type": "INT"
               }
             ],
             "connection": [

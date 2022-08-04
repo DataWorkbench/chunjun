@@ -6,7 +6,6 @@
           "name": "mysqlreader",
           "parameter": {
             "column": [
-
               {
                 "name": "empno",
                 "type": "INT"
