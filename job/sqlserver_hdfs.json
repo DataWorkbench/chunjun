@@ -1,0 +1,71 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "sqlserverreader",
+          "parameter": {
+            "column": [
+              {
+                "name": "id",
+                "type": "int"
+              },
+              {
+                "name": "name",
+                "type": "varchar"
+              },
+              {
+                "name": "score",
+                "type": "varchar"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:sqlserver://139.198.36.32:1433;databaseName=dataomnis"
+                ],
+                "table": [
+                  "stu"
+                ]
+              }
+            ],
+            "password": "c3Fsc2VydmVy",
+            "username": "SA",
+            "where": " 1=1  and id\u003c=10 and id\u003e=1"
+          }
+        },
+        "writer": {
+          "name": "hdfswriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "id",
+                "type": "INT"
+              },
+              {
+                "name": "name",
+                "type": "STRING"
+              },
+              {
+                "name": "score",
+                "type": "STRING"
+              }
+            ],
+            "defaultFS": "hdfs://192.168.0.46:9000",
+            "encoding": "UTF8",
+            "fieldDelimiter": "\\001",
+            "fileName": "scores2",
+            "fileType": "orc",
+            "path": "/test",
+            "writeMode": "append"
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
