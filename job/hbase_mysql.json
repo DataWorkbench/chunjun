@@ -5,29 +5,50 @@
         "reader": {
           "name": "hbasereader",
           "parameter": {
-            "hbaseConfig": {
-              "hbase.zookeeper.property.clientPort": "2181",
-              "hbase.rootdir": "hdfs://hadoop1:9000/hbase",
-              "hbase.cluster.distributed": "true",
-              "hbase.zookeeper.quorum": "hadoop1",
-              "zookeeper.znode.parent": "/hbase"
-            },
-            "table" : "emp3",
-            "encoding": "utf-8",
             "column": [
               {
-                "name": "rowkey",
-                "type": "string"
+                "name": "info:DEPTNO",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "info:COMM",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "info:SAL",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "info:HIREDATE",
+                "type": "STRING"
+              },
+              {
+                "name": "info:MGR",
+                "type": "INT"
+              },
+              {
+                "name": "info:JOB",
+                "type": "STRING"
               },
               {
                 "name": "info:ENAME",
                 "type": "STRING"
               },
               {
-                "name": "info:JOB",
+                "name": "rowkey",
                 "type": "STRING"
               }
-            ]
+            ],
+            "encoding": "UTF8",
+            "hbaseConfig": {
+              "hbase.cluster.distributed": "true",
+              "hbase.rootdir": "hdfs://192.168.0.46:9000/hbase",
+              "hbase.zookeeper.property.clientPort": "2181",
+              "hbase.zookeeper.quorum": "192.168.0.46,192.168.0.3,192.168.0.4",
+              "zookeeper.znode.parent": "/hbase"
+            },
+            "scanBatchSize": 100,
+            "scanCacheSize": 256
           }
         },
         "writer": {
@@ -35,31 +56,71 @@
           "parameter": {
             "column": [
               {
-                "name": "empno",
+                "name": "DEPTNO",
                 "type": "INT"
               },
               {
-                "name": "ename",
+                "name": "COMM",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "SAL",
+                "type": "DOUBLE"
+              },
+              {
+                "name": "HIREDATE",
                 "type": "VARCHAR"
               },
               {
-                "name": "job",
+                "name": "MGR",
+                "type": "INT"
+              },
+              {
+                "name": "JOB",
                 "type": "VARCHAR"
+              },
+              {
+                "name": "ENAME",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "EMPNO",
+                "type": "INT"
               }
             ],
             "connection": [
               {
-                "jdbcUrl": "jdbc:mysql://hadoop1:3306/test?useSSL=false",
+                "jdbcUrl": "jdbc:mysql://139.198.123.26:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
                 "table": [
-                  "emp"
-                ]
+                  "emp3"
+                ],
+                "schema": ""
               }
             ],
-            "password": "000000",
+            "password": "bXlzcWw=",
             "username": "root"
           }
-        }
+        },
+        "transformer": null,
+        "nameMapping": null
       }
-    ]
+    ],
+    "setting": {
+      "dirty": {
+        "hadoopConfig": {
+          "": ""
+        }
+      },
+      "record": "0",
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "restoreColumnIndex": 0
+      },
+      "speed": {
+        "channel": 1,
+        "readerChannel": 1,
+        "writerChannel": 1
+      }
+    }
   }
 }
