@@ -55,7 +55,7 @@ public class SqlServerCdcInputFormatBuilder
 
     protected String tableFormat = "%s.%s";
 
-    protected SqlServerCdcInputFormat format;
+    // protected SqlServerCdcInputFormat format;
 
     public SqlServerCdcInputFormatBuilder() {
         super(new SqlServerCdcInputFormat());
@@ -63,7 +63,7 @@ public class SqlServerCdcInputFormatBuilder
 
     public void setSqlServerCdcConf(SqlServerCdcConf sqlServerCdcConf) {
         super.setConfig(sqlServerCdcConf);
-        this.format.setSqlServerCdcConf(sqlServerCdcConf);
+        format.setSqlServerCdcConf(sqlServerCdcConf);
     }
 
     public void setRowConverter(AbstractCDCRowConverter rowConverter) {
@@ -72,8 +72,8 @@ public class SqlServerCdcInputFormatBuilder
 
     public void setRowConverter(
             AbstractCDCRowConverter rowConverter, boolean useAbstractBaseColumn) {
-        this.format.setRowConverter(rowConverter);
-        this.format.setUseAbstractColumn(useAbstractBaseColumn);
+        format.setRowConverter(rowConverter);
+        format.setUseAbstractColumn(useAbstractBaseColumn);
     }
 
     @Override

@@ -51,8 +51,8 @@ public class PGWalInputFormatBuilder extends BaseRichInputFormatBuilder<PGWalInp
 
     public void setRowConverter(
             AbstractCDCRowConverter rowConverter, boolean useAbstractBaseColumn) {
-        this.format.setRowConverter(rowConverter);
-        this.format.setUseAbstractColumn(useAbstractBaseColumn);
+        format.setRowConverter(rowConverter);
+        format.setUseAbstractColumn(useAbstractBaseColumn);
     }
 
     @Override

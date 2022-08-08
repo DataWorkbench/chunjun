@@ -23,9 +23,8 @@
           }
         },
         "writer": {
-          "name": "mysqlwriter",
+          "name": "hdfswriter",
           "parameter": {
-            "batchSize": 100,
             "column": [
               {
                 "name": "EMPNO",
@@ -33,11 +32,11 @@
               },
               {
                 "name": "ENAME",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "JOB",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "MGR",
@@ -45,7 +44,7 @@
               },
               {
                 "name": "HIREDATE",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "SAL",
@@ -60,25 +59,13 @@
                 "type": "INT"
               }
             ],
-            "connection": [
-              {
-                "jdbcUrl": "jdbc:mysql://139.198.123.26:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
-                "schema": "dataomnis",
-                "table": [
-                  "emp3"
-                ]
-              }
-            ],
-            "mode": "insert",
-            "password": "bXlzcWw=",
-            "postSql": [
-              ""
-            ],
-            "preSql": [
-              ""
-            ],
-            "semantic": "at-least-once",
-            "username": "root"
+            "defaultFS": "hdfs://192.168.0.46:9000",
+            "encoding": "UTF8",
+            "fieldDelimiter": ",",
+            "fileName": "sqlservercdc_emp",
+            "fileType": "text",
+            "path": "/test",
+            "writeMode": "append"
           }
         },
         "transformer": null,

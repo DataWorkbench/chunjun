@@ -3,29 +3,24 @@
     "content": [
       {
         "reader": {
-          "name": "binlogreader",
+          "name": "sqlservercdcreader",
           "parameter": {
             "cat": "insert,update,delete",
-            "connectionCharset": "UTF8",
-            "host": "139.198.36.32",
-            "isGTIDMode": false,
-            "jdbcUrl": "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
-            "parallel": true,
-            "parallelThreadSize": 2,
-            "password": "bXlzcWw=",
+            "databaseName": "dataomnis",
+            "password": "c3Fsc2VydmVy",
             "pavingData": true,
-            "port": 3306,
-            "split": true,
-            "table": [
-              "emp"
+            "pollInterval": 120,
+            "splitUpdate": true,
+            "tableList": [
+              "dbo.emp"
             ],
-            "username": "root"
+            "url": "jdbc:sqlserver://139.198.36.32:1433;databaseName=dataomnis",
+            "username": "SA"
           }
         },
         "writer": {
-          "name": "mysqlwriter",
+          "name": "hdfswriter",
           "parameter": {
-            "batchSize": 100,
             "column": [
               {
                 "name": "EMPNO",
@@ -33,11 +28,11 @@
               },
               {
                 "name": "ENAME",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "JOB",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "MGR",
@@ -45,7 +40,7 @@
               },
               {
                 "name": "HIREDATE",
-                "type": "VARCHAR"
+                "type": "STRING"
               },
               {
                 "name": "SAL",
@@ -60,39 +55,27 @@
                 "type": "INT"
               }
             ],
-            "connection": [
-              {
-                "jdbcUrl": "jdbc:mysql://139.198.123.26:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
-                "schema": "dataomnis",
-                "table": [
-                  "emp3"
-                ]
-              }
-            ],
-            "mode": "insert",
-            "password": "bXlzcWw=",
-            "postSql": [
-              ""
-            ],
-            "preSql": [
-              ""
-            ],
-            "semantic": "at-least-once",
-            "username": "root"
+            "defaultFS": "hdfs://192.168.0.46:9000",
+            "encoding": "UTF8",
+            "fieldDelimiter": ",",
+            "fileName": "sqlservercdc_emp",
+            "fileType": "text",
+            "path": "/test",
+            "writeMode": "append"
           }
         },
         "transformer": null,
         "nameMapping": {
           "schemaMappings": {
-            "dataomnis": "dataomnis"
+            "": ""
           },
           "tableMappings": {
-            "dataomnis": {
-              "emp": "emp"
+            "": {
+              "emp": ""
             }
           },
           "fieldMappings": {
-            "dataomnis": {
+            "": {
               "emp": {
                 "COMM": "COMM",
                 "DEPTNO": "DEPTNO",
