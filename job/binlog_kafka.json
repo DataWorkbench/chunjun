@@ -13,9 +13,9 @@
             "parallel": true,
             "parallelThreadSize": 2,
             "password": "bXlzcWw=",
-            "pavingData": false,
+            "pavingData": true,
             "port": 3306,
-            "split": false,
+            "split": true,
             "table": [
               "emp"
             ],
@@ -30,34 +30,20 @@
               "bootstrap.servers": "192.168.0.46:9092,192.168.0.3:9092,192.168.0.4:9092",
               "request.timeout.ms": "30000"
             },
-            "topic": "empbinlog"
+            "tableFields": [
+              "EMPNO",
+              "ENAME",
+              "JOB",
+              "MGR",
+              "HIREDATE",
+              "SAL",
+              "COMM",
+              "DEPTNO"
+            ],
+            "topic": "empbinlog2"
           }
         },
-        "transformer": null,
-        "nameMapping": {
-          "schemaMappings": {
-            "dataomnis": ""
-          },
-          "tableMappings": {
-            "dataomnis": {
-              "emp": "empbinlog"
-            }
-          },
-          "fieldMappings": {
-            "dataomnis": {
-              "emp": {
-                "COMM": "COMM",
-                "DEPTNO": "DEPTNO",
-                "EMPNO": "EMPNO",
-                "ENAME": "ENAME",
-                "HIREDATE": "HIREDATE",
-                "JOB": "JOB",
-                "MGR": "MGR",
-                "SAL": "SAL"
-              }
-            }
-          }
-        }
+        "transformer": null
       }
     ],
     "setting": {

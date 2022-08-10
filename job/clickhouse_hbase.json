@@ -1,0 +1,76 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "clickhousereader",
+          "parameter": {
+            "column": [
+              {
+                "name": "id",
+                "type": "Int32"
+              },
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "score",
+                "type": "String"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:clickhouse://139.198.123.26:8123/default"
+                ],
+                "table": [
+                  "stu"
+                ]
+              }
+            ],
+            "password": "clickhouse",
+            "username": "default",
+            "where": " 1=1  and id\u003c=100 and id\u003e=1"
+          }
+        },
+        "writer": {
+          "name": "hbasewriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "cf1:id",
+                "type": "INT"
+              },
+              {
+                "name": "cf1:name",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:score",
+                "type": "STRING"
+              }
+            ],
+            "hbaseConfig": {
+              "hbase.cluster.distributed": "true",
+              "hbase.rootdir": "hdfs://192.168.0.46/hbase",
+              "hbase.zookeeper.property.clientPort": "2181",
+              "hbase.zookeeper.quorum": "192.168.0.46",
+              "zookeeper.znode.parent": "/hbase"
+            },
+            "nullMode": "skip",
+            "rowkeyExpress": "$(cf1:score)",
+            "table": "stu",
+            "walFlag": false,
+            "writeBufferSize": 8388608
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
