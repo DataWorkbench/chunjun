@@ -1,0 +1,84 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "binlogreader",
+          "parameter": {
+            "cat": "insert,update,delete",
+            "connectionCharset": "UTF8",
+            "host": "192.168.0.63",
+            "isGTIDMode": false,
+            "jdbcUrl": "jdbc:mysql://192.168.0.63:3306/test?useSSL=false\u0026allowPublicKeyRetrieval=true",
+            "parallel": true,
+            "parallelThreadSize": 2,
+            "password": "Cltest123#",
+            "pavingData": true,
+            "port": 3306,
+            "split": true,
+            "table": [
+              "score"
+            ],
+            "username": "cltest"
+          }
+        },
+        "writer": {
+          "name": "hbasewriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "cf1:schema",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:table",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:ts",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:op_time",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:type",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:id",
+                "type": "INT"
+              },
+              {
+                "name": "cf1:name",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:score",
+                "type": "STRING"
+              }
+            ],
+            "hbaseConfig": {
+              "hbase.cluster.distributed": "true",
+              "hbase.rootdir": "hdfs://192.168.0.46/hbase",
+              "hbase.zookeeper.property.clientPort": "2181",
+              "hbase.zookeeper.quorum": "192.168.0.46",
+              "zookeeper.znode.parent": "/hbase"
+            },
+            "nullMode": "skip",
+            "rowkeyExpress": "$(cf1:id)",
+            "table": "score",
+            "walFlag": false,
+            "writeBufferSize": 8388608
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}

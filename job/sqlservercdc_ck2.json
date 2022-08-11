@@ -1,0 +1,85 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "sqlservercdcreader",
+          "parameter": {
+            "cat": "insert,update,delete",
+            "databaseName": "dataomnis",
+            "password": "c3Fsc2VydmVy",
+            "pavingData": true,
+            "pollInterval": 120,
+            "splitUpdate": true,
+            "tableList": [
+              "dbo.scores"
+            ],
+            "url": "jdbc:sqlserver://139.198.36.32:1433;databaseName=dataomnis",
+            "username": "SA"
+          }
+        },
+        "writer": {
+          "name": "clickhousewriter",
+          "parameter": {
+            "column": [
+              {
+                "name": "id",
+                "type": "Int32"
+              },
+              {
+                "name": "name",
+                "type": "String"
+              },
+              {
+                "name": "score",
+                "type": "String"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:clickhouse://139.198.42.56:8123/default",
+                "schema": "default",
+                "table": [
+                  "scores_add"
+                ]
+              }
+            ],
+            "mode": "insert",
+            "password": "zhu88jie",
+            "postSql": [
+              ""
+            ],
+            "preSql": [
+              ""
+            ],
+            "semantic": "at-least-once",
+            "username": "default"
+          }
+        },
+        "transformer": null,
+        "nameMapping": {
+          "schemaMappings": {
+            "dbo": "default"
+          },
+          "tableMappings": {
+            "dbo": {
+              "scores": "scores_add"
+            }
+          },
+          "fieldMappings": {
+            "dbo": {
+              "scores": {
+                "id": "id",
+                "name": "name",
+                "scores": "score"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
