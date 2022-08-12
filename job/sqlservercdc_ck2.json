@@ -5,7 +5,7 @@
         "reader": {
           "name": "sqlservercdcreader",
           "parameter": {
-            "cat": "insert,update,delete",
+            "cat": "delete,update,insert",
             "databaseName": "dataomnis",
             "password": "c3Fsc2VydmVy",
             "pavingData": true,
@@ -37,15 +37,15 @@
             ],
             "connection": [
               {
-                "jdbcUrl": "jdbc:clickhouse://139.198.42.56:8123/default",
+                "jdbcUrl": "jdbc:clickhouse://139.198.123.26:8123/default",
                 "schema": "default",
                 "table": [
-                  "scores_add"
+                  "scores2"
                 ]
               }
             ],
             "mode": "insert",
-            "password": "zhu88jie",
+            "password": "clickhouse",
             "postSql": [
               ""
             ],
@@ -63,7 +63,7 @@
           },
           "tableMappings": {
             "dbo": {
-              "scores": "scores_add"
+              "scores": "scores2"
             }
           },
           "fieldMappings": {
@@ -71,7 +71,7 @@
               "scores": {
                 "id": "id",
                 "name": "name",
-                "scores": "score"
+                "score": "score"
               }
             }
           }
