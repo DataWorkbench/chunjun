@@ -1,0 +1,78 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "essource",
+          "parameter": {
+            "column": [
+              {
+                "name": "name",
+                "type": "TEXT"
+              },
+              {
+                "name": "score",
+                "type": "TEXT"
+              },
+              {
+                "name": "id",
+                "type": "LONG"
+              }
+            ],
+            "hosts": [
+              "139.198.42.56:19200"
+            ],
+            "index": "user",
+            "password": "Change1Pwd",
+            "type": "_doc",
+            "username": "admin"
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "parameter": {
+            "batchSize": 2,
+            "column": [
+              {
+                "name": "name",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "score",
+                "type": "VARCHAR"
+              },
+              {
+                "name": "id",
+                "type": "INT"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://192.168.0.63:3306/test?useSSL=false\u0026allowPublicKeyRetrieval=true",
+                "schema": "test",
+                "table": [
+                  "score2"
+                ]
+              }
+            ],
+            "mode": "insert",
+            "password": "Cltest123#",
+            "postSql": [
+              ""
+            ],
+            "preSql": [
+              ""
+            ],
+            "semantic": "at-least-once",
+            "username": "cltest"
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}

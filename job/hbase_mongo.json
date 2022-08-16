@@ -1,0 +1,61 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "hbasereader",
+          "parameter": {
+            "column": [
+              {
+                "name": "cf1:name",
+                "type": "STRING"
+              },
+              {
+                "name": "cf1:score",
+                "type": "STRING"
+              }
+            ],
+            "encoding": "UTF8",
+            "hbaseConfig": {
+              "hbase.cluster.distributed": "true",
+              "hbase.rootdir": "hdfs://192.168.0.46/hbase",
+              "hbase.zookeeper.property.clientPort": "2181",
+              "hbase.zookeeper.quorum": "192.168.0.46",
+              "zookeeper.znode.parent": "/hbase"
+            },
+            "scanBatchSize": 100,
+            "scanCacheSize": 256,
+            "table": "scores1"
+          }
+        },
+        "writer": {
+          "name": "essink",
+          "parameter": {
+            "column": [
+              {
+                "name": "name",
+                "type": "TEXT"
+              },
+              {
+                "name": "score",
+                "type": "TEXT"
+              }
+            ],
+            "hosts": [
+              "139.198.42.56:19200"
+            ],
+            "index": "user",
+            "password": "Change1Pwd",
+            "type": "text",
+            "username": "admin"
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
