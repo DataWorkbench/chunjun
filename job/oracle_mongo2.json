@@ -1,0 +1,76 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "oraclereader",
+          "parameter": {
+            "column": [
+              {
+                "name": "ID",
+                "type": "decimal"
+              },
+              {
+                "name": "T_BINARY_DOUBLE",
+                "type": "decimal"
+              },
+              {
+                "name": "T_BINARY_FLOAT",
+                "type": "decimal"
+              }
+            ],
+            "connection": [
+              {
+                "jdbcUrl": [
+                  "jdbc:oracle:thin:@139.198.123.26:1521:helowin"
+                ],
+                "table": [
+                  "EMP"
+                ]
+              }
+            ],
+            "password": "123456",
+            "username": "tom"
+          }
+        },
+        "writer": {
+          "name": "mongodbwriter",
+          "parameter": {
+            "batchSize": 1,
+            "collectionName": "scores",
+            "column": [
+              {
+                "name": "id",
+                "type": "long"
+              },
+              {
+                "name": "name",
+                "type": "string"
+              }
+            ],
+            "url": "mongodb://root:Change1Pwd@139.198.42.56:27017/test?authSource=admin"
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "dirty": {
+        "hadoopConfig": {
+          "": ""
+        }
+      },
+      "record": "0",
+      "restore": {
+        "maxRowNumForCheckpoint": 0,
+        "restoreColumnIndex": 0
+      },
+      "speed": {
+        "channel": 1,
+        "readerChannel": 1,
+        "writerChannel": 1
+      }
+    }
+  }
+}

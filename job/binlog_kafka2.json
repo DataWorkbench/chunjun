@@ -1,0 +1,52 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "binlogreader",
+          "parameter": {
+            "cat": "insert,update,delete",
+            "connectionCharset": "UTF8",
+            "host": "139.198.36.32",
+            "isGTIDMode": false,
+            "jdbcUrl": "jdbc:mysql://139.198.36.32:3306/dataomnis?useSSL=false\u0026allowPublicKeyRetrieval=true",
+            "parallel": true,
+            "parallelThreadSize": 2,
+            "password": "bXlzcWw=",
+            "pavingData": true,
+            "port": 3306,
+            "split": true,
+            "start": {
+              "timestamp": 1660550461000
+            },
+            "table": [
+              "stu"
+            ],
+            "username": "root"
+          }
+        },
+        "writer": {
+          "name": "kafkasink",
+          "parameter": {
+            "producerSettings": {
+              "batch.size": "16384",
+              "bootstrap.servers": "192.168.0.46:9092,192.168.0.3:9092,192.168.0.4:9092",
+              "request.timeout.ms": "30000"
+            },
+            "tableFields": [
+              "id",
+              "name",
+              "age"
+            ],
+            "topic": "stu"
+          }
+        },
+        "transformer": null,
+        "nameMapping": null
+      }
+    ],
+    "setting": {
+      "record": "0"
+    }
+  }
+}
