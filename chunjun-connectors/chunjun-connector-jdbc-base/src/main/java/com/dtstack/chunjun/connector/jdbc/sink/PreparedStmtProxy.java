@@ -127,7 +127,6 @@ public class PreparedStmtProxy implements FieldNamedPreparedStatement {
                 row = copy;
             }
         }
-
         currentFieldNamedPstmt =
                 (FieldNamedPreparedStatement)
                         currentRowConverter.toExternal(row, this.currentFieldNamedPstmt);
