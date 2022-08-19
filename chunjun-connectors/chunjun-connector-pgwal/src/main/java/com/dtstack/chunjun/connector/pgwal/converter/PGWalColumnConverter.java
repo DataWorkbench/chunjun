@@ -191,10 +191,16 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
                             beforeList,
                             beforeColumnList,
                             beforeHeaderList,
-                            prefix_before);
+                            prefix_before,
+                            false);
             afterHeaderList =
                     parseColumnList(
-                            converters, afterList, afterColumnList, afterHeaderList, prefix_after);
+                            converters,
+                            afterList,
+                            afterColumnList,
+                            afterHeaderList,
+                            prefix_after,
+                            true);
         } else {
             beforeColumnList.add(
                     new MapColumn(processColumnList(entity.getColumnList(), entity.getOldData())));
@@ -305,7 +311,8 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
             List<Object> entryColumnList,
             List<AbstractBaseColumn> columnList,
             List<String> headerList,
-            String after)
+            String after,
+            boolean flag)
             throws Exception {
         List<String> originList = new ArrayList<>();
         for (int i = 0; i < entryColumnList.size(); i++) {
@@ -316,6 +323,11 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
                                 converters.get(i).deserialize(entryColumnList.get(i).toString());
                 columnList.add(column);
                 originList.add(after + headerList.get(i));
+            } else {
+                if (flag) {
+                    columnList.add(null);
+                    originList.add(after + headerList.get(i));
+                }
             }
         }
         return originList;
