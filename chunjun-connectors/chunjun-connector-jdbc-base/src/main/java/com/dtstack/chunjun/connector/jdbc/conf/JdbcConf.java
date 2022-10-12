@@ -36,6 +36,8 @@ public class JdbcConf extends ChunJunCommonConf implements Serializable {
     private static final long serialVersionUID = 1L;
 
     protected List<String> fullColumn;
+    protected List<String> columnTypeList;
+
     /** for postgresql */
     protected String insertSqlMode;
 
@@ -502,5 +504,13 @@ public class JdbcConf extends ChunJunCommonConf implements Serializable {
                 + ", allReplace="
                 + allReplace
                 + '}';
+    }
+
+    public List<String> getColumnTypeList() {
+        return columnTypeList;
+    }
+
+    public void setColumnTypeList(List<String> columnTypeList) {
+        this.columnTypeList = columnTypeList;
     }
 }

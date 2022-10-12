@@ -146,6 +146,8 @@ public class JdbcOutputFormat extends BaseRichOutputFormat {
         List<String> fullColumnList = pair.getLeft();
         List<String> fullColumnTypeList = pair.getRight();
         handleColumnList(fieldList, fullColumnList, fullColumnTypeList);
+
+        jdbcConf.setColumnTypeList(columnTypeList);
     }
 
     /**

@@ -78,6 +78,7 @@ public class DynamicPreparedStmt {
             throws SQLException {
         DynamicPreparedStmt dynamicPreparedStmt = new DynamicPreparedStmt();
 
+        dynamicPreparedStmt.jdbcConf = jdbcConf;
         dynamicPreparedStmt.writeExtInfo = writeExtInfo;
         dynamicPreparedStmt.jdbcDialect = jdbcDialect;
         dynamicPreparedStmt.getColumnNameList(header, extHeader);
