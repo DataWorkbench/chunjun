@@ -131,20 +131,25 @@ public class PGUtil {
             resultSet = conn.execSQLQuery(QUERY_SLOT);
 
             while (resultSet.next()) {
-                ReplicationSlotInfoWrapper wrapper =
-                        new ReplicationSlotInfoWrapper(
-                                resultSet.getString("slot_name"),
-                                resultSet.getString("active"),
-                                resultSet.getString("confirmed_flush_lsn"));
-
-                if (wrapper.getSlotName().equalsIgnoreCase(slotName) && !wrapper.isActive()) {
+                String resultSlotName = resultSet.getString("slot_name");
+                String resultSlotActive = resultSet.getString("active");
+                LOG.debug(
+                        "######### query slot slot_name: {}, active: {}",
+                        resultSlotName,
+                        resultSlotActive);
+                if (resultSlotName.equalsIgnoreCase(slotName)
+                        && !"t".equalsIgnoreCase(resultSlotActive)) {
+                    slotInfoWrapper =
+                            new ReplicationSlotInfoWrapper(
+                                    resultSlotName,
+                                    resultSlotActive,
+                                    resultSet.getString("confirmed_flush_lsn"));
                     //                slotInfoWrapper.setSlotType(resultSet.getString("slot_type"));
                     //                slotInfoWrapper.setDatabase(resultSet.getString("database"));
                     //
                     // slotInfoWrapper.setTemporary(resultSet.getString("temporary"));
                     //
                     // slotInfoWrapper.setRestartLsn(resultSet.getString("restart_lsn"));
-                    slotInfoWrapper = wrapper;
                     break;
                 }
                 slotCount++;
