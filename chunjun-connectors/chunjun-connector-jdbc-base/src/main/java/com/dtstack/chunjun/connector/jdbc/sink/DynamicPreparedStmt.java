@@ -129,6 +129,7 @@ public class DynamicPreparedStmt {
                         jdbcConf.getUniqueKey().toArray(new String[0]),
                         jdbcConf.getMode(),
                         jdbcConf.isAllReplace());
+        LOG.debug("write sql template: {}", sql);
         dynamicPreparedStmt.fieldNamedPreparedStatement =
                 FieldNamedPreparedStatementImpl.prepareStatement(connection, sql, fieldNames);
         return dynamicPreparedStmt;
