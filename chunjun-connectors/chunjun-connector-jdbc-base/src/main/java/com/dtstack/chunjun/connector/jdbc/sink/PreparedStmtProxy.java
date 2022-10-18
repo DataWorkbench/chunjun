@@ -196,6 +196,13 @@ public class PreparedStmtProxy implements FieldNamedPreparedStatement {
 
     public void writeSingleRecordInternal(RowData row) throws Exception {
         getOrCreateFieldNamedPstmt(row);
+        if (!writeExtInfo) {
+            if (row instanceof ColumnRowData) {
+                ColumnRowData copy = ((ColumnRowData) row).copy();
+                copy.removeExtHeaderInfo();
+                row = copy;
+            }
+        }
         currentFieldNamedPstmt =
                 (FieldNamedPreparedStatement)
                         currentRowConverter.toExternal(row, this.currentFieldNamedPstmt);
