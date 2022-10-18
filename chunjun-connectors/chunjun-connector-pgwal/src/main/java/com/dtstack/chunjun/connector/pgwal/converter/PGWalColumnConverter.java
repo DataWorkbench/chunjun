@@ -200,7 +200,7 @@ public class PGWalColumnConverter extends AbstractCDCRowConverter<ChangeLog, Log
                             afterColumnList,
                             afterHeaderList,
                             prefix_after,
-                            true);
+                            false);
         } else {
             beforeColumnList.add(
                     new MapColumn(processColumnList(entity.getColumnList(), entity.getOldData())));

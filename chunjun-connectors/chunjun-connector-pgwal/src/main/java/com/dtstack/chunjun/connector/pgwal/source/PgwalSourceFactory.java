@@ -54,7 +54,7 @@ public class PgwalSourceFactory extends SourceFactory {
         builder.setConf(conf);
         AbstractCDCRowConverter rowConverter;
         if (useAbstractBaseColumn) {
-            rowConverter = new PGWalColumnConverter(conf.isPavingData(), false);
+            rowConverter = new PGWalColumnConverter(conf.isPavingData(), conf.isPavingData());
         } else {
             final RowType rowType =
                     TableUtil.createRowType(conf.getColumn(), getRawTypeConverter());
